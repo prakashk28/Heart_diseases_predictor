@@ -4,109 +4,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heart Disease Prediction</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='heart3.png') }}" type="image/png" />
+
+    <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="hero-container">
         <div class="overlay">
             <div class="container">
-                <h1>Heart Disease Prediction</h1>
+                <!-- Header Section -->
+                <div class="header">
+                    <img src="{{ url_for('static', filename='heart4.png') }}" alt="Logo Left" class="heading-logo-left">
+                    <h1>Heart Disease Prediction</h1>
+                    <img src="{{ url_for('static', filename='heart4.png') }}" alt="Logo Right" class="heading-logo-right">
+                </div>
                 <p class="slogan">Healthy Heart, Happy Life!</p>
 
+                <!-- Prediction Form -->
                 <form action="{{ url_for('predict') }}" method="POST">
+                    <!-- Age Input -->
                     <div class="form-group">
                         <label for="age">Age:</label>
-                        <input type="number" id="age" name="age" required>
+                        <input type="number" id="age" name="age" placeholder="Enter your age" required>
                     </div>
+
+                    <!-- Sex Input -->
                     <div class="form-group">
-                        <label for="sex">Sex (0 = Male, 1 = Female):</label>
-                        <input type="number" id="sex" name="sex" required>
+                        <label for="sex">Sex:</label>
+                        <select id="sex" name="sex" required>
+                            <option value="" disabled selected>Select your sex</option>
+                            <option value="0">Male</option>
+                            <option value="1">Female</option>
+                        </select>
+                        
                     </div>
+
+                    <!-- Chest Pain Type -->
                     <div class="form-group">
-                        <label for="chest pain type">Chest Pain Type:</label>
-                        <select id="chest pain type" name="chest pain type">
+                        <label for="chest_pain_type">Chest Pain Type:</label>
+                        <select id="chest_pain_type" name="chest pain type" required>
+                            <option value="" disabled selected>Select chest pain type</option>
                             <option value="typical angina">Typical Angina</option>
-                            <option value="non-anginal pain">Non-anginal Pain</option>
                             <option value="atypical angina">Atypical Angina</option>
+                            <option value="non-anginal pain">Non-anginal Pain</option>
                             <option value="asymptomatic">Asymptomatic</option>
                         </select>
                     </div>
+
+                    <!-- Resting Blood Pressure -->
                     <div class="form-group">
-                        <label for="resting blood pressure">Resting Blood Pressure (90-200):</label>
-                        <input type="number" id="resting_blood_pressure" name="resting blood pressure" required>
+                        <label for="resting_blood_pressure">Resting Blood Pressure (90-200):</label>
+                        <input type="number" id="resting_blood_pressure" name="resting blood pressure" placeholder="Enter resting blood pressure" required>
                     </div>
+
+                    <!-- Serum Cholesterol -->
                     <div class="form-group">
-                        <label for="serum cholestoral">Serum Cholesterol (126-550):</label>
-                        <input type="number" id="serum_cholestoral" name="serum cholestoral" required>
+                        <label for="serum_cholesterol">Serum Cholesterol (126-550):</label>
+                        <input type="number" id="serum_cholesterol" name="serum cholestoral" placeholder="Enter serum cholesterol" required>
                     </div>
+
+                    <!-- Fasting Blood Sugar -->
                     <div class="form-group">
-                        <label for="fasting blood sugar">Fasting Blood Sugar:</label>
+                        <label>Fasting Blood Sugar:</label>
                         <div class="radio-group">
                             <div>
-                                <input type="radio" value="0" id="fasting_false" name="fasting blood sugar" required>
-                                <label for="fasting_false">True</label>
+                                <input type="radio" id="fasting_true" name="fasting blood sugar" value="1" required>
+                                <label for="fasting_true">True</label>
                             </div>
                             <div>
-                                <input type="radio" value="1" id="fasting_true" name="fasting blood sugar">
-                                <label for="fasting_true">False</label>
+                                <input type="radio" id="fasting_false" name="fasting blood sugar" value="0">
+                                <label for="fasting_false">False</label>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Maximum Heart Rate Achieved -->
                     <div class="form-group">
-                        <label for="resting electrocardiographic results ">slope of the peak:</label>
-                        <select id="resting electrocardiographic results " name="resting electrocardiographic results ">
-                            <option value="having ST-T">flat</option>
-                            <option value="normal">downsloping</option>
-                            <option value="hypertrophy">upsloping</option> 
-                        </select>        
+                        <label for="max_heart_rate">Maximum Heart Rate Achieved:</label>
+                        <input type="number" id="max_heart_rate" name="maximum heart rate achieved" placeholder="Enter maximum heart rate" required>
                     </div>
+
+                    <!-- Exercise Induced Angina -->
                     <div class="form-group">
-                        <label for="maximum heart rate achieved">Maximum Heart Rate Achieved:</label>
-                        <input type="number" id="maximum_heart_rate" name="maximum heart rate achieved" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="exercise induced angina">Exercise Induced Angina:</label>
+                        <label>Exercise Induced Angina:</label>
                         <div class="radio-group">
                             <div>
-                                <input type="radio" value="0" id="angina_false" name="exercise induced angina" required>
-                                <label for="angina_false">Yes</label>
+                                <input type="radio" id="angina_yes" name="exercise induced angina" value="1" required>
+                                <label for="angina_yes">Yes</label>
                             </div>
                             <div>
-                                <input type="radio" value="1" id="angina_true" name="exercise induced angina">
-                                <label for="angina_true">No</label>
+                                <input type="radio" id="angina_no" name="exercise induced angina" value="0">
+                                <label for="angina_no">No</label>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Oldpeak -->
                     <div class="form-group">
                         <label for="oldpeak">Oldpeak (Numeric value):</label>
-                        <input type="number" id="oldpeak" name="oldpeak" step="0.1" required>
+                        <input type="number" id="oldpeak" name="oldpeak" step="0.1" placeholder="Enter oldpeak value" required>
                     </div>
+
+                    <!-- Slope of the Peak -->
                     <div class="form-group">
-                        <label for=" slope of the peak">slope of the peak:</label>
-                        <select id=" slope of the peak" name=" slope of the peak">
-                            <option value="flat">flat</option>
-                            <option value="downsloping">downsloping</option>
-                            <option value="upsloping">upsloping</option>
-                            
+                        <label for="slope_of_peak">Slope of the Peak:</label>
+                        <select id="slope_of_peak" name="slope of the peak" required>
+                            <option value="" disabled selected>Select slope type</option>
+                            <option value="flat">Flat</option>
+                            <option value="upsloping">Upsloping</option>
+                            <option value="downsloping">Downsloping</option>
                         </select>
                     </div>
+
+                    <!-- Colored by Fluoroscopy -->
                     <div class="form-group">
-                        <label for="colored by flourosopy">Colored by Fluoroscopy (0-3):</label>
-                        <input type="number" id="colored by flourosopy" name="colored by flourosopy" required>
+                        <label for="fluoroscopy">Colored by Fluoroscopy (0-3):</label>
+                        <input type="number" id="fluoroscopy" name="colored by flourosopy" min="0" max="3" placeholder="Enter fluoroscopy value" required>
                     </div>
+
+                    <!-- Thalassemia -->
                     <div class="form-group">
                         <label for="thal">Thal:</label>
-                        <select id="thal" name="thal">
+                        <select id="thal" name="thal" required>
+                            <option value="" disabled selected>Select Thal type</option>
                             <option value="normal">Normal</option>
-                            <option value="fixed defect">fixed defect</option>
-                            <option value="reversable defect">Reversible defect</option>
+                            <option value="fixed defect">Fixed Defect</option>
+                            <option value="reversible defect">Reversible Defect</option>
                         </select>
                     </div>
+
+                    <!-- Submit Button -->
                     <button type="submit">Submit</button>
                 </form>
 
+                <!-- Prediction Result -->
                 {% if prediction %}
-                    <h2>Prediction: {{ prediction }}</h2>
+                    <div class="result">
+                        <h2>Prediction: {{ prediction }}</h2>
+                    </div>
                 {% endif %}
             </div>
         </div>

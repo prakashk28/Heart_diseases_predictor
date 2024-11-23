@@ -4,52 +4,77 @@ body {
     padding: 0;
     height: 100%;
     display: flex;
-    justify-content: center;  /* Horizontally center the content */
-    align-items: center;      /* Vertically center the content */
-    background-color: #FF0000; /* Fallback background color */
+    justify-content: center;
+    align-items: center;
+    background-color: #C2185B;
 }
 
 .hero-container {
     position: relative;
-    background-image: url('{{ url_for("static", filename="heart_disease.png") }}'); /* Replace with correct path */
+    background-image: url('{{ url_for("static", filename="heart3.png") }}');
     background-size: cover;
     background-position: center;
-    width: 100%;  /* Full width */
-    height: 100%; /* Full height */
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: center; /* Center the content horizontally */
-    align-items: center;     /* Center the content vertically */
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
 .overlay {
-    background-color: rgba(0, 0, 0, 0.5);  /* Dark overlay */
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
-    width: 100%;  /* Full width */
-    height: 100%; /* Full height */
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: center; /* Horizontally center */
-    align-items: center;     /* Vertically center */
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
-    max-width: 600px;
+    max-width: 1350px;
     width: 100%;
-    background: rgba(255, 255, 255, 0.8);  /* Semi-transparent white */
+    background: rgb(255, 255, 255);
     padding: 30px;
     border-radius: 10px;
 }
 
-h1 {
-    font-size: 40px;
-    color: #800080;
-    margin-bottom: 10px;
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
+.heading-logo-left, .heading-logo-right {
+    width: 65px; /* Adjust logo size */
+    height: 90px;
+    margin: 10px; /* Space between the images and the text */
+}
+
+h1 {
+    font-size: 69px; /* Adjust size as needed */
+    color: #800080;
+    margin-bottom: 10px;
+    text-align: center; /* Center the heading */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 
+        2px 2px 4px rgba(255, 255, 255, 0.4), /* first shadow */
+        -2px -2px 4px rgba(255, 255, 255, 0.4), /* second shadow */
+        4px 4px 6px rgba(255, 255, 255, 0.3), /* third shadow */
+        -4px -4px 6px rgba(0, 0, 0, 0.3); /* fourth shadow */
+}
+
+
 .slogan {
-    font-size: 24px;
-    color: #4B0082;
+    font-size: 34px;
+    color: #5a009a;
     margin-bottom: 20px;
+    text-align: center; /* Center the heading */
+    font-weight: bold;
 }
 
 .form-group {
@@ -59,21 +84,21 @@ h1 {
 label {
     display: block;
     margin-bottom: 5px;
-    color: #333;
-    font-weight: bold;  /* Makes the label text bold */
+    color: #000000;
+    font-weight: bold;
 }
 
 input, select {
     width: 100%;
     padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    border-radius: 10px;
+    border: 2px solid #c2b7b7;
 }
 
 button {
     width: 100%;
     padding: 10px;
-    background-color: #8B008B;
+    background-color: #b6196d;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -82,7 +107,7 @@ button {
 }
 
 button:hover {
-    background-color: #800080;
+    background-color: #80004f;
 }
 
 .result {
@@ -95,16 +120,15 @@ button:hover {
     text-align: center;
 }
 
-/* New CSS for radio buttons to be displayed side by side */
 .radio-group {
     display: flex;
-    justify-content: space-evenly; /* Distribute radio buttons evenly */
+    justify-content: space-evenly;
 }
 
 .radio-group input[type="radio"] {
-    margin: 0 10px; /* Add space between radio buttons */
+    margin: 0 10px;
 }
 
 .radio-group label {
-    font-weight: normal;  /* Ensure the labels have normal weight */
+    font-weight: normal;
 }

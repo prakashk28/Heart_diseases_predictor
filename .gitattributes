@@ -1,0 +1,5 @@
+git add .gitignore
+git commit -m "Update .gitignore to exclude large files"
+git push origin main
+*.py text eol=lf
+*.html text eol=lf

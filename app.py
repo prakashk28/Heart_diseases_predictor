@@ -31,22 +31,27 @@ def predict():
     prediction = None
     if request.method == 'POST':
         try:
-            # Retrieve form data
+            # Retrieve form data with validation for missing values
             form_data = {
                 'age': float(request.form.get('age', 0)),
-                'sex': float(request.form.get('sex', 0)),
-                'chest pain type': request.form.get('chest pain type'),
-                'resting blood pressure': float(request.form.get('resting blood pressure')),
-                'serum cholestoral': float(request.form.get('serum cholestoral')),
-                'fasting blood sugar': float(request.form.get('fasting blood sugar')),
-                'resting electrocardiographic results ': request.form.get('resting electrocardiographic results '),
-                'maximum heart rate achieved': float(request.form.get('maximum heart rate achieved')),
-                'exercise induced angina': float(request.form.get('exercise induced angina')),
-                'oldpeak': float(request.form.get('oldpeak')),
-                ' slope of the peak': request.form.get(' slope of the peak'),
-                'colored by flourosopy': float(request.form.get('colored by flourosopy')),
-                'thal': request.form.get('thal'),
+                'sex': float(request.form.get('sex', 0)),  # Default to 0 if missing
+                'chest pain type': request.form.get('chest pain type', 'typical angina'),  # Default to 'typical angina'
+                'resting blood pressure': float(request.form.get('resting blood pressure', 0)),
+                'serum cholestoral': float(request.form.get('serum cholestoral', 0)),
+                'fasting blood sugar': float(request.form.get('fasting blood sugar', 0)),
+                'resting electrocardiographic results ': request.form.get('resting electrocardiographic results ', 'normal'),  # Default to 'normal'
+                'maximum heart rate achieved': float(request.form.get('maximum heart rate achieved', 0)),
+                'exercise induced angina': float(request.form.get('exercise induced angina', 0)),
+                'oldpeak': float(request.form.get('oldpeak', 0)),
+                ' slope of the peak': request.form.get(' slope of the peak', 'flat'),  # Default to 'flat'
+                'colored by flourosopy': float(request.form.get('colored by flourosopy', 0)),
+                'thal': request.form.get('thal', 'normal')  # Default to 'normal'
             }
+
+            # Check for missing or invalid values in form data
+            for key, value in form_data.items():
+                if value in [None, '', 'None']:
+                    raise ValueError(f"Missing or invalid value for {key}")
 
             # Convert form data to DataFrame
             input_data_df = pd.DataFrame([form_data])
@@ -74,4 +79,3 @@ def display(res):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
