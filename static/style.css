@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;  /* Horizontally center the content */
+    align-items: center;      /* Vertically center the content */
+    background-color: #FF0000; /* Fallback background color */
+}
+
+.hero-container {
+    position: relative;
+    background-image: url('{{ url_for("static", filename="heart_disease.png") }}'); /* Replace with correct path */
+    background-size: cover;
+    background-position: center;
+    width: 100%;  /* Full width */
+    height: 100%; /* Full height */
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center;     /* Center the content vertically */
+    text-align: center;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);  /* Dark overlay */
+    padding: 20px;
+    width: 100%;  /* Full width */
+    height: 100%; /* Full height */
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center;     /* Vertically center */
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);  /* Semi-transparent white */
+    padding: 30px;
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: 40px;
+    color: #800080;
+    margin-bottom: 10px;
+}
+
+.slogan {
+    font-size: 24px;
+    color: #4B0082;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;  /* Makes the label text bold */
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #8B008B;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #800080;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* New CSS for radio buttons to be displayed side by side */
+.radio-group {
+    display: flex;
+    justify-content: space-evenly; /* Distribute radio buttons evenly */
+}
+
+.radio-group input[type="radio"] {
+    margin: 0 10px; /* Add space between radio buttons */
+}
+
+.radio-group label {
+    font-weight: normal;  /* Ensure the labels have normal weight */
+}

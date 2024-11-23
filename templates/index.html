@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="hero-container">
+        <div class="overlay">
+            <div class="container">
+                <h1>Heart Disease Prediction</h1>
+                <p class="slogan">Healthy Heart, Happy Life!</p>
+
+                <form action="{{ url_for('predict') }}" method="POST">
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sex">Sex (0 = Male, 1 = Female):</label>
+                        <input type="number" id="sex" name="sex" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="chest pain type">Chest Pain Type:</label>
+                        <select id="chest pain type" name="chest pain type">
+                            <option value="typical angina">Typical Angina</option>
+                            <option value="non-anginal pain">Non-anginal Pain</option>
+                            <option value="atypical angina">Atypical Angina</option>
+                            <option value="asymptomatic">Asymptomatic</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="resting blood pressure">Resting Blood Pressure (90-200):</label>
+                        <input type="number" id="resting_blood_pressure" name="resting blood pressure" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="serum cholestoral">Serum Cholesterol (126-550):</label>
+                        <input type="number" id="serum_cholestoral" name="serum cholestoral" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fasting blood sugar">Fasting Blood Sugar:</label>
+                        <div class="radio-group">
+                            <div>
+                                <input type="radio" value="0" id="fasting_false" name="fasting blood sugar" required>
+                                <label for="fasting_false">True</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="1" id="fasting_true" name="fasting blood sugar">
+                                <label for="fasting_true">False</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="resting electrocardiographic results ">slope of the peak:</label>
+                        <select id="resting electrocardiographic results " name="resting electrocardiographic results ">
+                            <option value="having ST-T">flat</option>
+                            <option value="normal">downsloping</option>
+                            <option value="hypertrophy">upsloping</option> 
+                        </select>        
+                    </div>
+                    <div class="form-group">
+                        <label for="maximum heart rate achieved">Maximum Heart Rate Achieved:</label>
+                        <input type="number" id="maximum_heart_rate" name="maximum heart rate achieved" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exercise induced angina">Exercise Induced Angina:</label>
+                        <div class="radio-group">
+                            <div>
+                                <input type="radio" value="0" id="angina_false" name="exercise induced angina" required>
+                                <label for="angina_false">Yes</label>
+                            </div>
+                            <div>
+                                <input type="radio" value="1" id="angina_true" name="exercise induced angina">
+                                <label for="angina_true">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="oldpeak">Oldpeak (Numeric value):</label>
+                        <input type="number" id="oldpeak" name="oldpeak" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for=" slope of the peak">slope of the peak:</label>
+                        <select id=" slope of the peak" name=" slope of the peak">
+                            <option value="flat">flat</option>
+                            <option value="downsloping">downsloping</option>
+                            <option value="upsloping">upsloping</option>
+                            
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="colored by flourosopy">Colored by Fluoroscopy (0-3):</label>
+                        <input type="number" id="colored by flourosopy" name="colored by flourosopy" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="thal">Thal:</label>
+                        <select id="thal" name="thal">
+                            <option value="normal">Normal</option>
+                            <option value="fixed defect">fixed defect</option>
+                            <option value="reversable defect">Reversible defect</option>
+                        </select>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+
+                {% if prediction %}
+                    <h2>Prediction: {{ prediction }}</h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
